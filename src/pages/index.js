@@ -13,7 +13,7 @@ const IndexPage = () => {
       loading="eager"
       >
       </StaticImage>
-      <form method="post" data-netlify="true" action="#">
+      <form method="post" data-netlify="true">
         <label>
           Name
           <input type="text" name="name" id="name" />
