@@ -23,7 +23,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <div>
-        <h3>Cloud Atlas Stuff</h3>
+        <h3>Cloud Atlas Stuff - Send Us a Message (posts to same page)</h3>
         <p>Building on the Atlas metaphor, exploring Fetlify Forms, and Serverless Functions</p>
         <StaticImage  src="../images/cloudatlas-poster.jpg" 
           height={600} 
@@ -33,10 +33,10 @@ const IndexPage = () => {
           >
           </StaticImage>
           <form method="post" 
-                name="Data Collection Form Ajax" 
+                name="Data Collection Form" 
                 data-netlify="true"
                 onSubmit={handleSubmit}>
-            <input type="hidden" name="form-name" value="Data Collection Form Ajax"/>
+            <input type="hidden" name="form-name" value="Data Collection Form"/>
             <label>
               Name
               <input type="text" name="name" id="name" />
