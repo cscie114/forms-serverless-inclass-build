@@ -8,10 +8,15 @@ const IndexPage = () => {
     const apiUrl = '/.netlify/functions/graphqlApi'
     
     const [charData, setCharData] = useState({characters: []});
-    //let characters = {data:[{"name": "Larry"},{"title":"prof"}]};
     useEffect(() => {
-      console.log(`calling on ${apiUrl}`)
-      callAPI('POST', apiUrl, null, JSON.stringify({action: "get"}))
+      fetch(apiUrl, {
+        method: 'post',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({'action': 'get'})
+      })
+        .then((response) => {
+          return response.json();
+      })
         .then((cJson)=>{
           console.log(cJson.data.data)
           setCharData(cJson.data.data)
@@ -26,7 +31,7 @@ const IndexPage = () => {
         <h3>Cloud Atlas Characters API Call</h3>
         <p>Building on the Atlas metaphor, exploring Netlify Forms, and Serverless Functions</p>
         <StaticImage  src="../images/cloudatlas-poster.jpg" 
-          height={600} 
+          height={200} 
           alt="Cloud Atlas Poster"
           placeholder="blurred"
           loading="eager"

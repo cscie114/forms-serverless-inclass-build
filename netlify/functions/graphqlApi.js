@@ -1,20 +1,24 @@
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
 
 const handler = async function (event, context) {
-  const key = process.env.OMDB_KEY;
-  const { movieId } = event.queryStringParameters;
+    const apiUrl = 'https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/photosapp-zxrdq/graphql'    
+    let graphqlQuery={};
+
+
   try {
-    const response = await fetch(`http://www.omdbapi.com/?apikey=${key}&i=${movieId}`, {
+    const response = await fetch(apiUrl,  {
+      method: "post",
       headers: { 
         Accept: 'application/json',
-    },
-    })
+        apiKey: `${process.env.MONGO_API_KEY}`,
+        },
+      body:JSON.stringify(graphqlQuery)
+    }) 
     if (!response.ok) {
       // NOT res.status >= 200 && res.status < 300
       return { statusCode: response.status, body: response.statusText }
     }
-    const data = await response.json()
-
+    const data = await response.json() 
     return {
       statusCode: 200,
       body: JSON.stringify({ data }),
@@ -29,5 +33,5 @@ const handler = async function (event, context) {
     }
   }
 }
-
-module.exports = { handler }
+  
+module.exports = {handler}

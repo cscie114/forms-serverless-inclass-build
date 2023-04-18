@@ -1,33 +1,44 @@
-import * as React from "react"
+import React, {useState, useRef} from "react"
 import { StaticImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 
 const IndexPage = () => {
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const myForm = event.target;
+        const formData = new FormData(myForm); 
+        const encData = new URLSearchParams(formData).toString()
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encData,
+        })
+          .then(() => {
+            console.log(encData);
+        })
+          .catch((error) => alert(error));
+    };
+  
   return (
     <Layout>
       <div>
-        <h3>Cloud Atlas Stuff</h3>
-        <p>Building on the Atlas metaphor, exploring Netlify Forms with an <code>action</code> attribute</p>
-        <StaticImage  src="../images/cloudatlas-poster.jpg" 
-          height={600} 
-          alt="Cloud Atlas Poster"
-          placeholder="blurred"
-          loading="eager"
-          >
-          </StaticImage>
+      <h3>Netlify Forms - Submit via AJAX, useState</h3>
+        <p>Exploring Netlify Forms - AJAX, useState for better UX</p>
           <form method="post" 
                 name="Data Collection Form" 
                 data-netlify="true"
-                action="confirm">
+                onSubmit={handleSubmit}>
             <input type="hidden" name="form-name" value="Data Collection Form"/>
             <label>
               Name
               <input type="text" name="name" id="name" />
-            </label><br/>
+            </label>
             <label>
               Email
               <input type="email" name="email" id="email" />
-            </label><br/>
+            </label>
             <button type="submit">Send</button>
             <input type="reset" value="Clear" />
           </form>

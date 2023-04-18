@@ -3,11 +3,17 @@ import { StaticImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 
 const IndexPage = () => {
+
+  const handleSubmit = (event) => {
+    
+  };
+  
+
   return (
     <Layout>
       <div>
-        <h3>Netlify Forms - Basic</h3>
-        <p>Exploring Netlify Forms</p>
+        <h3>Netlify Forms - Submit via AJAX</h3>
+        <p>Exploring Netlify Forms - AJAX</p>
           <form method="post" 
                 name="Data Collection Form" 
                 data-netlify="true">
@@ -15,11 +21,11 @@ const IndexPage = () => {
             <label>
               Name
               <input type="text" name="name" id="name" />
-            </label><br/>
+            </label>
             <label>
               Email
               <input type="email" name="email" id="email" />
-            </label><br/>
+            </label>
             <button type="submit">Send</button>
             <input type="reset" value="Clear" />
           </form>

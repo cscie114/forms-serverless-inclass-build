@@ -6,9 +6,9 @@ const IndexPage = () => {
   return (
     <Layout>
       <div>
-        <h3>Netlify Forms - Basic</h3>
-        <p>Exploring Netlify Forms</p>
-          <form method="post" 
+        <h3>Netlify Forms - Add an Action Destination</h3>
+        <p>Exploring Netlify Forms - Form Actions</p>  
+        <form method="post" 
                 name="Data Collection Form" 
                 data-netlify="true">
             <input type="hidden" name="form-name" value="Data Collection Form"/>
