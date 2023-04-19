@@ -1,7 +1,10 @@
-import * as React from "react"
+import React, {useState, useRef} from "react"
 import Layout from '../components/layout'
 
 const IndexPage = () => {
+
+  const [msg, setMsg] = useState();
+  const formRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,20 +18,25 @@ const IndexPage = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encData,
     })
-      .then(() => console.log(encData))
+      .then(() => {
+        console.log(encData)
+        setMsg(<p>Thank you for submitting your request.</p>);
+        formRef.current.reset();
+      })
       .catch((error) => alert(error));
   };
   
-
   return (
     <Layout>
       <div>
         <h3>Netlify Forms - Submit via AJAX</h3>
         <p>Exploring Netlify Forms - AJAX</p>
+        { msg }
           <form method="post" 
                 name="Data Collection Form" 
                 data-netlify="true"
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}
+                ref={formRef}>
             <input type="hidden" name="form-name" value="Data Collection Form"/>
             <label>
               Name
