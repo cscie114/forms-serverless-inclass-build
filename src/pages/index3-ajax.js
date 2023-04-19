@@ -4,7 +4,19 @@ import Layout from '../components/layout'
 const IndexPage = () => {
 
   const handleSubmit = (event) => {
-    
+    event.preventDefault();
+
+    const myForm = event.target;
+    const formData = new FormData(myForm); 
+    const encData = new URLSearchParams(formData).toString()
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encData,
+    })
+      .then(() => console.log(encData))
+      .catch((error) => alert(error));
   };
   
 
@@ -15,7 +27,8 @@ const IndexPage = () => {
         <p>Exploring Netlify Forms - AJAX</p>
           <form method="post" 
                 name="Data Collection Form" 
-                data-netlify="true">
+                data-netlify="true"
+                onSubmit={handleSubmit}>
             <input type="hidden" name="form-name" value="Data Collection Form"/>
             <label>
               Name
