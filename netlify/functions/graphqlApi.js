@@ -1,9 +1,42 @@
 const fetch = require('node-fetch');
 
 const handler = async function (event, context) {
-    const apiUrl = 'https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/photosapp-zxrdq/graphql'    
+    const apiUrl = 'https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/photosapp-zxrdq/graphql'
+    const { action, name, role, story, film_actor } = JSON.parse(event.body);    
     let graphqlQuery={};
 
+    if (action == 'get'){
+      graphqlQuery = {
+          query: `query characters {
+            characters(sortBy:FILM_ACTOR_ASC) {
+              _id
+              name
+              film_actor
+              role
+              story
+            }
+          }`
+      } 
+  }else if (action == 'post'){
+    // Example modeling a REST POST (create) request in graphql
+        graphqlQuery = {
+            query: `mutation {
+                insertOneCharacter(data: {
+                    name: "${name}",
+                    story: "${story}",
+                    role: "${role}",
+                    film_actor: "${film_actor}"
+                })
+                {
+                  _id
+                  name
+                  role
+                  story
+                  film_actor
+                }
+              }`
+        }
+      }
 
   try {
     const response = await fetch(apiUrl,  {

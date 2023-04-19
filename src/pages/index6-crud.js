@@ -91,12 +91,11 @@ const IndexPage = () => {
     return (
       <div>
         <form onSubmit={handleNewCharacter}>
-      
-        <label>Character Name <input name="name" type="text" id="name"/></label><br/>
-        <label>Actor <input name="film_actor" type="text" id="film_actor"/></label><br/>
-        <label>Story <input name="story" type="text" id="story"/></label><br/>
-        <label>Role <input name="role" type="text" id="role"/></label><br/>
-        <input type="submit"/><br/>
+          <label>Character Name <input name="name" type="text" id="name"/></label><br/>
+          <label>Actor <input name="film_actor" type="text" id="film_actor"/></label><br/>
+          <label>Story <input name="story" type="text" id="story"/></label><br/>
+          <label>Role <input name="role" type="text" id="role"/></label><br/>
+          <input type="submit"/><br/>`
         </form>
       </div>
         
