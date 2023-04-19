@@ -1,5 +1,4 @@
 import React, {useState, useRef} from "react"
-import { StaticImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 
 const IndexPage = () => {
