@@ -10,7 +10,7 @@ const IndexPage = () => {
         <form method="post" 
                 name="Data Collection Form" 
                 data-netlify="true"
-                action="confirm">
+                action="/confirm">
             <input type="hidden" name="form-name" value="Data Collection Form"/>
             <label>
               Name
