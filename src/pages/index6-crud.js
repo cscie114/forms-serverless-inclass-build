@@ -30,7 +30,7 @@ const IndexPage = () => {
       <div>
         <h3>Cloud Atlas Characters API Call</h3>
         <p>Building on the Atlas metaphor, exploring Netlify Forms, and Serverless Functions</p>
-        <StaticImage  src="../images/cloudatlas-poster.jpg" 
+        <StaticImage src="../images/cloudatlas-poster.jpg" 
           height={200} 
           alt="Cloud Atlas Poster"
           placeholder="blurred"
@@ -47,7 +47,7 @@ const IndexPage = () => {
           <tbody>     
           {
           charData.characters.map((c) => {
-            return <Character char={c}/>  
+            return <Character char={c} key={c._id}/>  
           })
           }
           </tbody>
@@ -59,7 +59,8 @@ const IndexPage = () => {
 
 
   function Character({char}){
-    return <tr key={char._id}><td >{char.name}</td><td> {char.film_actor} </td><td>{char.story}</td><td>{char.role}</td></tr>
+    //console.log(char);
+    return <tr ><td >{char.name}</td><td> {char.film_actor} </td><td>{char.story}</td><td>{char.role}</td></tr>
   }
 
   function CharacterForm(){

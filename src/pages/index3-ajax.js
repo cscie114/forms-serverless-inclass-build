@@ -18,8 +18,8 @@ const IndexPage = () => {
     })
       .then(() => {
         console.log(encData)
-        alert("Thank you for submitting your form!")
-        navigate("/confirm/")
+        alert("Thank you for submitting your form!")  // client-side JS runs here!
+        navigate("/confirm/")                         // as does client-side React
       })
       .catch((error) => alert(error));
   };
