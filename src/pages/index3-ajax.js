@@ -17,6 +17,7 @@ const IndexPage = () => {
     })
       .then(() => {
         console.log(encData)
+        alert("Thank you for submitting your form!")
       })
       .catch((error) => alert(error));
   };
