@@ -18,6 +18,7 @@ const IndexPage = () => {
       .then(() => {
         console.log(encData)
         alert("Thank you for submitting your form!")
+        navigate("/confirm/")
       })
       .catch((error) => alert(error));
   };
